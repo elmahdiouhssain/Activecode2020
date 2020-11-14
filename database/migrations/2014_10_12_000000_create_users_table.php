@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->boolean('is_banned')->default(1);
             //$table->boolean('is_full')->default(0);
             $table->string('role')->default('seller');
-            $table->string('inputstate');
-            $table->text('comment');
+            //$table->string('inputstate');
+            $table->text('comment')->nullable();
             //$table->ipAddress('visitor');
             $table->rememberToken();
             $table->timestampsTz();

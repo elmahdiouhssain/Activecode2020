@@ -40,6 +40,9 @@
 <li>
 <a href="{{ url('tickets') }}"><span class="fa fa-paper-plane"></span> Tickets</a>
 </li>
+<li>
+<a href="#"><span class="fa fa-shield" ></span> Activation</a>
+</li>
 </ul>
 <div class="footer">
 <p>

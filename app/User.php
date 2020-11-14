@@ -42,7 +42,7 @@ class User extends Authenticatable
 
 
     public function activations(){
-        return $this->hasMany(activation::class);
+        return $this->hasMany(Activation::class);
     }
 
     public function comments(){

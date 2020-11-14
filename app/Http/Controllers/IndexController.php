@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rule;
-use App\activation;
+use App\Activation;
 use App\User;
 use Sessions;
 

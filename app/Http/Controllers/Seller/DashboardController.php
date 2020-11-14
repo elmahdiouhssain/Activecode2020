@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-use App\activation;
+use App\Activation;
 use App\User;
 use App\Ticket;
 use App\ApiSetting;
@@ -26,12 +26,12 @@ class DashboardController extends Controller{
   public function index(){
     //$user = Auth::user()->id;
 
-    $act = User::withCount('activations')->where("id",\Auth::user()->id)->first();
+    $act = User::withCount('Activations')->where("id",\Auth::user()->id)->first();
     $ticket = User::withCount('tickets')->where("id",\Auth::user()->id)->first();
 
     /////isactive code////
-    $actives = User::withCount(['activations as isactive' => function ($query) {$query->where('is_active', 1);}])->where("id",\Auth::user()->id)->first();
-    $inactives = User::withCount(['activations as inactive' => function ($query) {$query->where('is_active', 0);}])->where("id",\Auth::user()->id)->first();
+    $actives = User::withCount(['Activations as isactive' => function ($query) {$query->where('is_active', 1);}])->where("id",\Auth::user()->id)->first();
+    $inactives = User::withCount(['Activations as inactive' => function ($query) {$query->where('is_active', 0);}])->where("id",\Auth::user()->id)->first();
 
     return view('seller.index', compact('act','ticket','actives','inactives'));
 
@@ -41,14 +41,14 @@ class DashboardController extends Controller{
   public function getCodesByReseller($id){
 
     $user = Auth::user()->id;
-    $activations = User::find($user)->activations;
-
+    $activations = User::find($user)->Activations;
+    
     //$pdo = DB::getQueryLog();
-    //$query = "SELECT * FROM activations WHERE id = $id";
+    //$query = "SELECT * FROM Activations WHERE id = $id";
     //$result = mysqli_query($pdo, $query);
     //$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-    //return $activations;
+    //return $Activations;
     return view('seller.lines',['activations'=>$activations,'id'=>$user]);
 
   }
@@ -117,7 +117,7 @@ class DashboardController extends Controller{
           $usr =  $insterdata['username'];
           $pss =  $insterdata['password'];
           $msg = $insterdata['message'];
-          $act = new activation();
+          $act = new Activation();
           $act->username = $usr;
           $act->password = $pss;
           $act->package = $request->mySelect;
